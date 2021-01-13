@@ -10,7 +10,7 @@
 		"node": "14.15.4"
 	},
 	"scripts": {
-		"build": "echo 'TODO'",
+		"build": "tsc",
 		"lint": "echo 'TODO'",
 		"format": "echo 'TODO",
 		"test": "echo 'TEST'",
