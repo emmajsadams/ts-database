@@ -173,13 +173,50 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 
 		return true
 	}
+
+	/**
+	 * O(1) runtime where n is the number of items.
+	 * O(n) runtime where n is the number of items in the transaction, if a transaction exists.
+	 * O(1) runtime where n is the number of transactions.
+	 */
+	commitTransactions(): boolean {
+		if (!this.inTransaction()) {
 		return false
 	}
 
-	commitTransactions(): number {
-		// if in transaction iterate through all keys in the transaction.values and transaction.valueCounts setting them in the database.
-		// note this only needs to occur for the current transaction since it has all the state of the previous transaction.
-		return 0
+		// Since the current transaction state contains the state from previous transactions we only need to focus
+		// on committing the current transaction.
+
+		const values = this.getCurrentValues()
+		for (const [key, transactionValue] of values) {
+			if (transactionValue === null) {
+				this.databaseInstance.values.delete(key)
+			} else {
+				this.databaseInstance.values.set(key, transactionValue)
+			}
+		}
+
+		const valueCounts = this.getCurrentValueCounts()
+		for (const [value, transactionValueCount] of valueCounts) {
+			const databaseValueCount = this.databaseInstance.valueCounts.has(value)
+				? this.databaseInstance.valueCounts.get(value)
+				: 0
+			const finalValueCount = databaseValueCount + transactionValueCount
+
+			// We want to remove valueCounts below zero because that indicates the item was deleted. Otherwise
+			// our valueCounts would slowly grow over time from deleted keys in transactions no longer used.
+			if (finalValueCount > 0) {
+				this.databaseInstance.valueCounts.set(value, finalValueCount)
+			} else {
+				this.databaseInstance.valueCounts.delete(value)
+			}
+		}
+
+		// Once we have committed the current transaction we want to be sure to remove all transactions
+		// so that if commit is called again the same transactions will not be committed again.
+		this.transactions = []
+
+		return true
 	}
 
 	private getCurrentTransaction(): InMemoryDatabaseInstance<K, V> | null {
