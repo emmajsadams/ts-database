@@ -16,6 +16,13 @@ take-home project for devoted health implemented following TechAssignment.pdf re
 - Explain how to install yarn
 - Consider implementing a main JS file with TSC build so this could be included as a library. `"main": "scripts/connectInMemory",`
 
+# Setup
+
+- Clone this repository git@gitlab.com:EmmaJCline/in-memory-database.git
+- Install the node version listed in package.json engines.node (14.15.4 at the time of submission). A popular tool for managing node versions is https://github.com/tj/n, but your operating system package manager would also work here.
+- Install yarn 1.x which will be used as an alternative to npm https://classic.yarnpkg.com/en/docs/install
+- Execute `yarn install` in the project directory
+
 # File Structure
 
 - package.json contains a list of yarn scripts to develop the program and run it. It also specifies the libraries used and which version of node should be used to run the application.
