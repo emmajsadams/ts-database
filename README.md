@@ -2,8 +2,6 @@
 
 Take home project for https://www.devoted.com/. Implemented following the TechAssignment.pdf requirements. If you would like to be added to the private GitLab repo https://gitlab.com/EmmaJCline/in-memory-database just send me an email at emma@cline.engineer. It shows the current CI job status and that all the commits were verified with my local gpg key.
 
-TODO: change master to main branch.
-
 # Setup
 
 - Clone this repository `git@gitlab.com:EmmaJCline/in-memory-database.git`
