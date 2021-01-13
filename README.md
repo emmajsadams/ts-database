@@ -41,6 +41,7 @@ Execute `yarn run connect-in-memory` in the project directory
 
 - package.json contains a list of yarn scripts to develop the program and run it. It also specifies the libraries used and which version of node should be used to run the application.
 - .yarnrc includes a single line that instructs the yarn package manager to install specific versions of libraries ensuring a consistent application across installs.
+- .editorconfig configures code editor settings based on what the linters and formatters for this project expect. It is supported by a wide variety of code editors https://editorconfig.org/
 
 # Decisions
 
