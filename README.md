@@ -18,6 +18,7 @@ take-home project for devoted health implemented following TechAssignment.pdf re
 
 # File Structure
 
+- package.json contains a list of yarn scripts to develop the program and run it. It also specifies the libraries used and which version of node should be used to run the application.
 - .yarnrc includes a single line that instructs the yarn package manager to install specific versions of libraries ensuring a consistent application across installs.
 
 # Decisions
