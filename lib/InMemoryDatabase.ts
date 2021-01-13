@@ -79,7 +79,6 @@ export default class InMemoryDatabase<K, V> implements Database<K, V> {
 	}
 
 	private inTransaction(): boolean {
-		// transactions.length > 0
-		return false
+		return this.transactions.length > 0
 	}
 }
