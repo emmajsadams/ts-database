@@ -70,6 +70,11 @@ export default class InMemoryDatabase<K, V> implements Database<K, V> {
 	private getCurrentTransaction(): InMemoryDatabaseInstance<K, V> | null {
 		// if inTransaction then return last transaction in the transactions array
 		// else return null
+
+		if (this.inTransaction) {
+			return this.transactions[this.transactions.length - 1]
+		}
+
 		return null
 	}
 
