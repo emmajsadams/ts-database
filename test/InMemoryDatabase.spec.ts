@@ -1,4 +1,4 @@
-import InMemoryDatabase from '../lib/InMemoryDatabase'
+import { InMemoryDatabase } from '../lib/InMemoryDatabase'
 import { createStringDatabaseSpec } from './createDatabaseSpec'
 
 createStringDatabaseSpec(
