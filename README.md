@@ -19,3 +19,11 @@ take-home project for devoted health implemented following TechAssignment.pdf re
 # File Structure
 
 - .yarnrc includes a single line that instructs the yarn package manager to install specific versions of libraries ensuring a consistent application across installs.
+
+# Decisions
+
+- Yarn instead of npm: TODO
+- TypeScript instead of JavaScript: TODO
+- Class instead of function: TODO
+- Why git and source control in general?: TODO
+- Why linter and code formatter?: TODO
