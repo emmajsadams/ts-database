@@ -17,11 +17,24 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 		this.transactions = []
 	}
 
+	/**
+	 * O(1) runtime where n is the number of keys.
+	 * O(1) runtime where n is the number of keys in the transaction, if a transaction exists.
+	 * O(1) runtime where n is the number of transactions.
+	 */
 	get(key: K): V | null {
-		// if currentTransaction exists get the value from the transaction first. if the value in the transaction is null be sure to return null since that means the key will be removed from the database instance if present.
-		// if no transaction get the value from the databaseInstance.
-		// if no value exists in either the transaction or the databaseInstance return null
-		return null
+		// Get the database value for the key if it exists.
+		let value = this.databaseInstance.values.has(key)
+			? this.databaseInstance.values.get(key)
+			: null
+
+		// Get the transaction value for the key if in a transaction, defaulting to the database value if the key does not exist.
+		if (this.inTransaction()) {
+			const values = this.getCurrentValues()
+			value = values.has(key) ? values.get(key) : value
+	}
+
+		return value
 	}
 
 	set(key: K, value: V): V | null {
