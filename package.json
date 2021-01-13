@@ -1,0 +1,18 @@
+{
+	"name": "in-memory-database",
+	"version": "1.0.0",
+	"description": "An in memory database following the specs of TechAssignment.pdf",
+	"repository": "git@gitlab.com:EmmaJCline/in-memory-database.git",
+	"author": "Emma Cline <emma@cline.engineer>",
+	"license": "MIT",
+	"private": true,
+	"engines": {
+		"node": "14.15.4"
+	},
+	"scripts": {
+		"build": "echo 'TODO'",
+		"lint": "echo 'TODO'",
+		"format": "echo 'TODO",
+		"connect-in-memory": "echo 'TODO'"
+	}
+}
