@@ -13,6 +13,7 @@
 		"build": "echo 'TODO'",
 		"lint": "echo 'TODO'",
 		"format": "echo 'TODO",
+		"test": "echo 'TEST'",
 		"connect-in-memory": "echo 'TODO'"
 	}
 }
