@@ -6,6 +6,16 @@ interface InMemoryDatabaseInstance<K, V> {
 }
 
 export default class InMemoryDatabase<K, V> implements Database<K, V> {
+	private databaseInstance: InMemoryDatabaseInstance<K, V>
+	private transactions: InMemoryDatabaseInstance<K, V>[]
+
+	constructor() {
+		this.databaseInstance = {
+			values: new Map<K, V>(),
+			valueCounts: new Map<K, number>(),
+		}
+		this.transactions = []
+	}
 
 	get(key: K): V | null {
 		// if currentTransaction exists get the value from the transaction first. if the value in the transaction is null be sure to return null since that means the key will be removed from the database instance if present.
