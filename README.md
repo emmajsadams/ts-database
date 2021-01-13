@@ -47,3 +47,7 @@ Execute `yarn run connect-in-memory` in the project directory
 - Class instead of function: TODO
 - Why git and source control in general?: TODO
 - Why linter and code formatter?: TODO
+
+# Differences between working with git as an individual vs on a team
+
+TODO: note how features would have been broken up in the project management tool of choice. Then PRS would be created for each feature and committed to a master branch. Since it is just me I kept it simple and committed as I went.
