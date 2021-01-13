@@ -46,9 +46,29 @@ Note that installing TypeScript, Mocha, EsLint, Prettier, and EditorConfig exten
 
 # File Structure
 
-- package.json contains a list of yarn scripts to develop the program and run it. It also specifies the libraries used and which version of node should be used to run the application.
-- .yarnrc includes a single line that instructs the yarn package manager to install specific versions of libraries ensuring a consistent application across installs.
-- .editorconfig configures code editor settings based on what the linters and formatters for this project expect. It is supported by a wide variety of code editors https://editorconfig.org/
+- `lib` contains all reusable library code not intended to be run directly.
+- `lib/executeCommand.ts` contains the function executeCommand to parse user input from the CLI database REPL.
+- `lib/InMemoryDatabase.ts` contains the class implementing the in memory version of Database used in the CLI program.
+- `scripts` contains all code focused on executing CLI programs that is not easily reusable.
+- `scripts/connect.ts` contains code for connecting the executeCommand REPL to any Database implementation. String keys and values are used as the example specifies.
+- `scripts/connectInMemory.ts` invokes connect for the InMemoryDatabase.
+- `test` contains all tests for lib code.
+- `test/createDatabaseSpec.ts` contains a generic createDatabaseSpec function that will test all public methods of a Database implementation. String keys and values are used for simplicity of testing.
+- `test/InMemoryDatabase.spec.ts` invokes createDatabaseSpec with an InMemoryDatabase.
+- `.editorconfig` configures code editor settings based on what the linters and formatters for this project expect using https://editorconfig.org/.
+- `.eslintignore` configures which files for https://eslint.org/ to ignore.
+- `.eslintrc.js` configures https://eslint.org/ with default settings for TypeScript as well as includes an optional rule for sorting imports.
+- `.gitignore` ignores build artifacts not necessary to commit to the repo.
+- `.gitlab-ci.yml` sets up a GitLab CI job on commit that runs all build verification tasks.
+- `.npmrc` includes a single line that instructs the npm package manager to install specific versions of libraries ensuring a consistent application across installs. By default npm allows versions greater than the specified version to be used.
+- `.nycrc` configures the test coverage tool https://github.com/istanbuljs/nyc.
+- `.prettierignore` configures which files for https://prettier.io/ to ignore.
+- `.prettierrc.js` configures the additional rules for the code formatter https://prettier.io/.
+- `LICENSE.md` notes the license of the code repository.
+- `package-lock.json` ensures all sub dependencies of dependencies use exact versions across installs. This ensures dependency consistency regardless of the machine.
+- `package.json` contains a list of npm scripts to develop the program and run it. It also specifies the libraries used and which version of node should be used to run the application.
+- `TechAssessment.pdf` specifies the requirements of this repository.
+- `tsconfig.json` configures https://www.typescriptlang.org/ for this repository.
 
 # Decisions
 
