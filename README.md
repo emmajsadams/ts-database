@@ -1,3 +1,17 @@
 # In Memory Database
 
-An in-memory database implemented for Devoted Health's take-home assignment. 
+take-home project for devoted health implemented following TechAssignment.pdf requirements
+
+# TODOS
+
+- Add interface for Database
+- Implement Database interface as InMemoryDatabase. First as psuedocode skeleton. Then method by method
+- Setup prettier
+- Setup eslint
+- Setup ts-node to execute script
+- Setup tsdoc https://typedoc.org/guides/doccomments/
+- Setup mocha for testing. Consider testing both the CLI and the InMemoryDatabase.
+- Use commander to to implement CLI interface for InMemoryDatabase
+- Explain how to install node with n
+- Explain how to install yarn
+- Consider implementing a main JS file with TSC build so this could be included as a library. `"main": "scripts/connectInMemory",`
