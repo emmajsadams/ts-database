@@ -22,4 +22,11 @@ export default class InMemoryDatabase<K, V> implements Database<K, V> {
 		return null
 	}
 
+	delete(key: K): V | null {
+		// if currentTransaction exists set the value to null. a null value for a key means that it should be removed from the databaseInstance once committed and that it does not exist when using set or count
+		// if no transaction call delete on databaseInstance.
+		// for both cases if there is an existing value subtract one from the valueCounts for either the transaction or the dataabaseInstance
+		// for both cases return the existing value
+		return null
+	}
 }
