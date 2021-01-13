@@ -67,4 +67,9 @@ export default class InMemoryDatabase<K, V> implements Database<K, V> {
 		return 0
 	}
 
+	private getCurrentTransaction(): InMemoryDatabaseInstance<K, V> | null {
+		// if inTransaction then return last transaction in the transactions array
+		// else return null
+		return null
+	}
 }
