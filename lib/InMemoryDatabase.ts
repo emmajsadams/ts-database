@@ -13,4 +13,13 @@ export default class InMemoryDatabase<K, V> implements Database<K, V> {
 		// if no value exists in either the transaction or the databaseInstance return null
 		return null
 	}
+	set(key: K, value: V): V | null {
+		// if currentTransaction exists set the value in the transaction
+		// if no transaction set the value in the databaseInstance
+		// for both cases if there is an existing value add one from the valueCounts for either the transaction or the dataabaseInstance
+		// for both cases return the existing value if it exists
+
+		return null
+	}
+
 }
