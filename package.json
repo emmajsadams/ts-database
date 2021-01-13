@@ -11,7 +11,8 @@
 	},
 	"scripts": {
 		"build": "tsc",
-		"lint": "echo 'TODO'",
+		"lint": "eslint * --no-error-on-unmatched-pattern",
+		"fix-lint": "eslint * --fix --no-error-on-unmatched-pattern",
 		"format": "echo 'TODO",
 		"test": "echo 'TEST'",
 		"connect-in-memory": "echo 'TODO'"

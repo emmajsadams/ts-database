@@ -33,6 +33,7 @@ Execute `yarn run connect-in-memory` in the project directory
 # Development
 
 - Execute `yarn run lint` in the project directory to lint all project files using https://eslint.org/
+- Execute `yarn run fix-lint` in the project directory to automatically fix all linting errors that can be automatically fixed.
 - Execute `yarn run format` in the project directory to format all project files using https://prettier.io/
 - Execute `yarn run build` in the project directory to compile all https://www.typescriptlang.org/ project files using the tsconfig.json settings specified in the root of this repository into the
 - Execute `yarn run test` in the project directory to run all the https://mochajs.org/ tests for the project
