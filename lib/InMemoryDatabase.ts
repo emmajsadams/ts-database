@@ -49,4 +49,10 @@ export default class InMemoryDatabase<K, V> implements Database<K, V> {
 		return false
 	}
 
+	commitTransactions(): number {
+		// if in transaction iterate through all keys in the transaction.values and transaction.valueCounts setting them in the database.
+		// note this only needs to occur for the current transaction since it has all the state of the previous transaction.
+		return 0
+	}
+
 }
