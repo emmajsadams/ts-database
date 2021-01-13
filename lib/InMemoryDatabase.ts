@@ -2,7 +2,7 @@ import Database from '../types/Database'
 
 interface InMemoryDatabaseInstance<K, V> {
 	values: Map<K, V>
-	valueCounts: Map<K, number>
+	valueCounts: Map<V, number>
 }
 
 export default class InMemoryDatabase<K, V> implements Database<K, V> {
@@ -12,7 +12,7 @@ export default class InMemoryDatabase<K, V> implements Database<K, V> {
 	constructor() {
 		this.databaseInstance = {
 			values: new Map<K, V>(),
-			valueCounts: new Map<K, number>(),
+			valueCounts: new Map<V, number>(),
 		}
 		this.transactions = []
 	}
