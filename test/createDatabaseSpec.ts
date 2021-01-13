@@ -7,7 +7,7 @@ import { Database } from '../types/Database'
 export function createStringDatabaseSpec(
 	createDatabase: () => Database<string, string>,
 	databaseImplementationName: string,
-) {
+): void {
 	describe(databaseImplementationName, () => {
 		let database: Database<string, string>
 
