@@ -21,26 +21,25 @@ take-home project for devoted health implemented following TechAssignment.pdf re
 
 # Setup
 
-- Clone this repository git@gitlab.com:EmmaJCline/in-memory-database.git
-- Install the node version listed in package.json engines.node (14.15.4 at the time of submission). A popular tool for managing node versions is https://github.com/tj/n, but your operating system package manager would also work here.
-- Install yarn 1.x which will be used as an alternative to npm https://classic.yarnpkg.com/en/docs/install
-- Execute `yarn install` in the project directory
+- Clone this repository `git@gitlab.com:EmmaJCline/in-memory-database.git`
+- Install the node version listed in package.json engines.node (lts which is 14.15.4 at the time of submission). A popular tool for managing node versions is https://github.com/tj/n, but your operating system package manager would also work here.
+- Execute `npm install` in the project directory
 
-# Execution
+# Connect to in memory database
 
-Execute `yarn run connect-in-memory` in the project directory
+Execute `npm run connect-in-memory` in the project directory to start the REPL environment necessary to replicate the TechAssignment.pdf examples. Please note as mentioned in #Decisions my program does not display NULL for unset keys (further reasoning below) so the example output will not exactly match my output.
 
 # Development
 
-All yarn tasks listed below should be run in the project directory.
+All npm tasks listed below should be run in the project directory.
 
-- `yarn run lint`: lint all project files using https://eslint.org/.
-- `yarn run fix-lint`: automatically fix all linting errors that can be automatically fixed.
-- `yarn run format`: check the format for all project files using https://prettier.io/ and confirm it complies with the standard.
-- `yarn run fix-format`: automatically fix the format of all files using https://prettier.io/.
-- `yarn run compile`: compile all https://www.typescriptlang.org/ project files using the tsconfig.json settings specified in the root of this repository into the /bin folder.
-- `yarn run test`: run all the https://mochajs.org/ tests for the project.
-- `yarn run build`: check lint rules, check format rules, compile the project, and run all tests. Used for GitLab CI builds.
+- `npm run lint`: lint all project files using https://eslint.org/.
+- `npm run fix-lint`: automatically fix all linting errors that can be automatically fixed using https://eslint.org/.
+- `npm run format`: check the format for all project files using https://prettier.io/.
+- `npm run fix-format`: automatically fix the format of all files using https://prettier.io/.
+- `npm run compile`: compile all https://www.typescriptlang.org/ project files using the `tsconfig.json` settings specified in the root of this repository into the `/bin` folder.
+- `npm run test`: run all the https://mochajs.org/ tests for the project.
+- `npm run build`: check lint rules, check format rules, compile the project, and run all tests. Used for GitLab CI builds.
 
 Note that installing TypeScript, Mocha, EsLint, Prettier, and EditorConfig extensions for your editor automates the need to run these scripts. I use VSCode for example which supports all these.
 
