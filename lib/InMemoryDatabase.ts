@@ -42,4 +42,11 @@ export default class InMemoryDatabase<K, V> implements Database<K, V> {
 		// copy the previous transaction. if none create a new map. DO NOT COPY THE FULL DATABASE INSTANCE
 		// add to transactions array as last transaction
 	}
+
+	rollbackTransaction(): boolean {
+		// if in transaction then remove the last transaction from the list.
+		// this makes the currentTransaction now the previousTransaction or reverts to no transaction mode
+		return false
+	}
+
 }
