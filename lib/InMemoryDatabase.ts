@@ -106,12 +106,28 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 
 		return value
 	}
-	count(value: V): number {
-		// if currentTransaction exists add the valueCounts from the transaction to the databaseInstance valueCounts
-		// if no transaction get the databaseInstance.valueCounts
-		// in either case if the value does not exist in the Database then return zero.
 
-		return 0
+	/**
+	 * O(1) runtime where n is the number of keys.
+	 * O(1) runtime where n is the number of keys in the transaction, if a transaction exists.
+	 * O(1) runtime where n is the number of transactions.
+	 */
+	count(value: V): number {
+		const databaseCount = this.databaseInstance.valueCounts.has(value)
+			? this.databaseInstance.valueCounts.get(value)
+			: 0
+
+		// If there is no transaction we know the database count is accurate
+		if (!this.inTransaction()) {
+			return databaseCount
+	}
+
+		// If there is a transaction we need to add the database value count to the transaction value count since
+		// count must reflect the current state of the transaction
+		const valueCounts = this.getCurrentValueCounts()
+		const transactionCount = valueCounts.has(value) ? valueCounts.get(value) : 0
+
+		return databaseCount + transactionCount
 	}
 
 	beginTransaction(): void {
