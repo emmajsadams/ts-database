@@ -3,7 +3,7 @@
  * If a transaction is active then all CRUD operations apply to the current transaction, else they apply to the overall database.
  * Any number of transactions can be started or rolled back before committing them. Transactions are committed first in first out (FIFO).
  */
-export default interface Database<K, V> {
+export interface Database<K, V> {
 	/**
 	 * Gets the value for the given key.
 	 * If a transaction is active then this method gets the value from that transaction.
@@ -44,7 +44,7 @@ export default interface Database<K, V> {
 
 	/**
 	 * Begins a new transaction.
-	 * If a transaction already exists than that transaction is closed and a new transaction is opened with the state of that transaction.
+	 * If a transaction is active than that transaction is closed and a new transaction is opened with the state of that transaction.
 	 * If no transaction exists then a new transaction is opened with the state of the database.
 	 */
 	beginTransaction(): void
@@ -60,7 +60,7 @@ export default interface Database<K, V> {
 	/**
 	 * Commits the changes of all existing transactions first in first out (FIFO) to the database and closes the current transaction.
 	 *
-	 * @returns The number of transactions committed. If no transactions exist then returns 0.
+	 * @returns True if transaction(s) were committed, else false if no transaction is active.
 	 */
-	commitTransactions(): number
+	commitTransactions(): boolean
 }
