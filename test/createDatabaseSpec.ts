@@ -116,6 +116,15 @@ export function createStringDatabaseSpec(
 			assert.strictEqual(database.get('key'), null)
 		})
 
+		it('should commit nothing from transaction where value was set and deleted ', () => {
+			database.beginTransaction()
+			database.set('key', 'value')
+			database.delete('key')
+			database.commitTransactions()
+
+			assert.strictEqual(database.get('key'), null)
+		})
+
 		it('should do nothing if the key does not exist when calling delete', () => {
 			database.delete('key')
 
