@@ -37,13 +37,39 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 		return value
 	}
 
+	/**
+	 * O(1) runtime where n is the number of keys.
+	 * O(1) runtime where n is the number of keys in the transaction, if a transaction exists.
+	 * O(1) runtime where n is the number of transactions.
+	 */
 	set(key: K, value: V): V | null {
-		// if currentTransaction exists set the value in the transaction
-		// if no transaction set the value in the databaseInstance
-		// for both cases if there is an existing value add one from the valueCounts for either the transaction or the databaseInstance
-		// for both cases return the existing value if it exists
+		const overwrittenValue = this.get(key)
+		const values = this.getCurrentValues()
+		const valueCounts = this.getCurrentValueCounts()
 
-		return null
+		// If a previous value for the given key exists we need to update the valueCounts
+		if (overwrittenValue) {
+			const overwrittenValueCount = valueCounts.has(overwrittenValue)
+				? valueCounts.get(overwrittenValue) - 1
+				: -1
+
+			// In transactions we allow negative value counts due to how count sums transaction + database valueCounts,
+			// but if we have no transaction we should just remove the value key from the database valueCounts
+			if (this.inTransaction() || overwrittenValueCount > 0) {
+				valueCounts.set(overwrittenValue, overwrittenValueCount)
+			} else {
+				valueCounts.delete(overwrittenValue)
+	}
+		}
+
+		// Finally, the valueCounts must be updated on each set for the newly set value in order for count() to return the correct value
+		const previousValueCount = valueCounts.has(value)
+			? valueCounts.get(value)
+			: 0
+		valueCounts.set(value, previousValueCount + 1)
+		values.set(key, value)
+
+		return overwrittenValue
 	}
 
 	delete(key: K): V | null {
