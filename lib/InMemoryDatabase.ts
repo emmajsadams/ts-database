@@ -130,9 +130,33 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 		return databaseCount + transactionCount
 	}
 
+	/**
+	 * Database state is not copied upon creating a new transaction, but the current transaction state if it exists is copied.
+	 * O(1) runtime where n is the number of items.
+	 * O(n) runtime where n is the number of items in the transaction, if a transaction exists.
+	 * O(1) runtime where n is the number of transactions.
+	 */
 	beginTransaction(): void {
-		// copy the previous transaction. if none create a new map. DO NOT COPY THE FULL DATABASE INSTANCE
-		// add to transactions array as last transaction
+		let newTransactionValues: Map<K, V>
+		let newTransactionValueCounts: Map<V, number>
+
+		// If we are in a transaction we copy the previous transaction state to avoid the need to iterate through
+		// the whole transactions array to get the current state of all transactions. Otherwise we create empty maps
+		// since we do not want to copy the full database instance into the first transaction due to the space concerns.
+		if (this.inTransaction()) {
+			newTransactionValues = new Map<K, V>(this.getCurrentValues())
+			newTransactionValueCounts = new Map<V, number>(
+				this.getCurrentValueCounts(),
+			)
+		} else {
+			newTransactionValues = new Map<K, V>()
+			newTransactionValueCounts = new Map<V, number>()
+	}
+
+		this.transactions.push({
+			values: newTransactionValues,
+			valueCounts: newTransactionValueCounts,
+		})
 	}
 
 	rollbackTransaction(): boolean {
