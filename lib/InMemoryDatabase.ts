@@ -159,9 +159,20 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 		})
 	}
 
+	/**
+	 * O(1) runtime where n is the number of items.
+	 * O(1) runtime where n is the number of items in the transaction, if a transaction exists.
+	 * O(1) runtime where n is the number of transactions.
+	 */
 	rollbackTransaction(): boolean {
-		// if in transaction then remove the last transaction from the list.
-		// this makes the currentTransaction now the previousTransaction or reverts to no transaction mode
+		if (!this.inTransaction()) {
+			return false
+		}
+
+		this.transactions.pop()
+
+		return true
+	}
 		return false
 	}
 
