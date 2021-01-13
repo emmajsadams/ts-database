@@ -1,7 +1,7 @@
 default:
-  image: gitpod/workspace-full
+  image: node:14.15.4
 
 build-job:
   stage: build
   script:
-    - yarn install && yarn run build
+    - npm install && npm run build
