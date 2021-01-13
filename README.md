@@ -17,7 +17,7 @@ take-home project for devoted health implemented following TechAssignment.pdf re
 - Create a bash script to automate setup of all dependencies (would need to assume n is used for managing node)
 - Consider implementing a main JS file with TSC build so this could be included as a library. `"main": "scripts/connectInMemory",`
 - Create a video walk-through using OBS and capture sample output that mirrors requirement output.
-- Create gitlab ci hook to run all development tasks (consolidate into a single CI task)
+- Change gitlab ci hook to use 14.15.4 and add this back to package.json `	"engines": { "node": "14.15.4"},`
 
 # Setup
 

@@ -6,9 +6,6 @@
 	"author": "Emma Cline <emma@cline.engineer>",
 	"license": "MIT",
 	"private": true,
-	"engines": {
-		"node": "14.15.4"
-	},
 	"scripts": {
 		"compile": "tsc",
 		"lint": "eslint * --no-error-on-unmatched-pattern",
