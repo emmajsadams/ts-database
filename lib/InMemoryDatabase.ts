@@ -29,4 +29,12 @@ export default class InMemoryDatabase<K, V> implements Database<K, V> {
 		// for both cases return the existing value
 		return null
 	}
+
+	count(value: V): number {
+		// if currentTransaction exists add the valueCounts from the transaction to the databaseInstance valueCounts
+		// if no transaction get the databaseInstance.valueCounts
+		// in either case if the value does not exist in the Database then return zero.
+
+		return 0
+	}
 }
