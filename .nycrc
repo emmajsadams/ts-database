@@ -1,0 +1,13 @@
+{
+	"extends": "@istanbuljs/nyc-config-typescript",
+	"check-coverage": true,
+	"all": true,
+	"include": [
+		"**/*.ts"
+	],
+	"exclude": [
+		"test",
+		"node_modules",
+		"scripts"
+	]
+}
