@@ -17,6 +17,7 @@
 		"connect-in-memory": "echo 'TODO'"
 	},
 	"dependencies": {
+		"commander": "6.2.1",
 		"ts-node": "9.1.1",
 		"typescript": "4.1.3"
 	}
