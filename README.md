@@ -12,9 +12,10 @@ take-home project for devoted health implemented following TechAssignment.pdf re
 - Setup tsdoc https://typedoc.org/guides/doccomments/
 - Setup mocha for testing. Consider testing both the CLI and the InMemoryDatabase.
 - Use commander to to implement CLI interface for InMemoryDatabase
-- Explain how to install node with n
-- Explain how to install yarn
+- Migrate to Yarn 2 before submission https://yarnpkg.com/getting-started/migration (current project/guide uses yarn 1)
+- Create a bash script to automate setup of all dependencies (would need to assume n is used for managing node)
 - Consider implementing a main JS file with TSC build so this could be included as a library. `"main": "scripts/connectInMemory",`
+- Create a video walk-through using OBS and capture sample output that mirrors requirement output.
 
 # Setup
 
