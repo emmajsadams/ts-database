@@ -1,23 +1,8 @@
 # In Memory Database
 
-take-home project for devoted health implemented following TechAssignment.pdf requirements
+Take home project for https://www.devoted.com/. Implemented following the TechAssignment.pdf requirements. If you would like to be added to the private GitLab repo https://gitlab.com/EmmaJCline/in-memory-database just send me an email at emma@cline.engineer. It shows the current CI job status and that all the commits were verified with my local gpg key.
 
-# TODOS
-
-- Add interface for Database
-- Implement Database interface as InMemoryDatabase. First as psuedocode skeleton. Then method by method
-- Setup prettier
-- Setup eslint
-- Setup ts-node to execute script
-- Setup tsdoc https://typedoc.org/guides/doccomments/
-- Setup mocha for testing. Consider testing both the CLI and the InMemoryDatabase.
-- Setup code coverage tool like nyc or instabul
-- Use commander to to implement CLI interface for InMemoryDatabase
-- Migrate to Yarn 2 before submission https://yarnpkg.com/getting-started/migration (current project/guide uses yarn 1)
-- Create a bash script to automate setup of all dependencies (would need to assume n is used for managing node)
-- Consider implementing a main JS file with TSC build so this could be included as a library. `"main": "scripts/connectInMemory",`
-- Create a video walk-through using OBS and capture sample output that mirrors requirement output.
-- Change gitlab ci hook to use 14.15.4 and add this back to package.json `	"engines": { "node": "14.15.4"},`
+TODO: change master to main branch.
 
 # Setup
 
