@@ -15,7 +15,7 @@
 		"fix-lint": "eslint * --fix --no-error-on-unmatched-pattern",
 		"format": "prettier --check *",
 		"fix-format": "prettier --write *",
-		"test": "echo 'TEST'",
+		"test": "ts-mocha -p tsconfig.json test/**/*.spec.ts",
 		"connect-in-memory": "echo 'TODO'"
 	},
 	"dependencies": {
