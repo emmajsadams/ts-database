@@ -11,6 +11,7 @@ take-home project for devoted health implemented following TechAssignment.pdf re
 - Setup ts-node to execute script
 - Setup tsdoc https://typedoc.org/guides/doccomments/
 - Setup mocha for testing. Consider testing both the CLI and the InMemoryDatabase.
+- Setup code coverage tool like nyc or instabul
 - Use commander to to implement CLI interface for InMemoryDatabase
 - Migrate to Yarn 2 before submission https://yarnpkg.com/getting-started/migration (current project/guide uses yarn 1)
 - Create a bash script to automate setup of all dependencies (would need to assume n is used for managing node)
