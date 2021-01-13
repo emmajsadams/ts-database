@@ -82,13 +82,136 @@ Note that installing TypeScript, Mocha, EsLint, Prettier, and EditorConfig exten
 - No default exports: I avoid using default exports in node modules because this ensures names of exports are kept up to date across the codebase and explicit renames are identified clearly. See this link for more information https://basarat.gitbook.io/typescript/main-1/defaultisbad
 - Testing by behavior: Rather than breaking up tests by specific methods, I prefer to test by behaviors instead. Often times unit tests involve several methods such as get and set in order to test a behavior. This makes trying to break up tests by method somewhat confusing. Focusing on all the unique behaviors of a system under test avoids the need to specify which method is being tested.
 
+# Example output
 
-- Yarn instead of npm: TODO
-- TypeScript instead of JavaScript: TODO
-- Class instead of function: TODO
-- Why git and source control in general?: TODO
-- Why linter and code formatter?: TODO
+Here is the output of me recreating all the examples listed in the TechAssessment.pdf
 
-# Differences between working with git as an individual vs on a team
+```
+emma@Blighttown:~/in-memory-database$ npm run connect-in-memory
 
-TODO: note how features would have been broken up in the project management tool of choice. Then PRS would be created for each feature and committed to a master branch. Since it is just me I kept it simple and committed as I went.
+> in-memory-database@1.0.0 connect-in-memory /home/emma/in-memory-database
+> ts-node ./scripts/connectInMemory.ts
+
+>> GET a
+>> SET a foo
+>> SET b foo
+>> COUNT foo
+2
+>> COUNT bar
+0
+>> DELETE a
+>> COUNT foo
+1
+>> SET b baz
+>> COUNT foo
+0
+>> GET b
+baz
+>> GET B
+>> END
+emma@Blighttown:~/in-memory-database$ npm run connect-in-memory
+
+> in-memory-database@1.0.0 connect-in-memory /home/emma/in-memory-database
+> ts-node ./scripts/connectInMemory.ts
+
+>> SET a foo
+>> SET a foo
+>> COUNT foo
+1
+>> GET a
+foo
+>> DELETE a
+>> GET a
+>> COUNT foo
+0
+>> END
+
+emma@Blighttown:~/in-memory-database$ npm run connect-in-memory
+
+> in-memory-database@1.0.0 connect-in-memory /home/emma/in-memory-database
+> ts-node ./scripts/connectInMemory.ts
+
+>> BEGIN
+>> SET a foo
+>> GET a
+foo
+>> BEGIN
+>> SET a bar
+>> GET a
+bar
+>> SET a baz
+>> ROLLBACK
+>> GET a
+foo
+>> ROLLBACK
+>> GET a
+>> END
+
+emma@Blighttown:~/in-memory-database$ npm run connect-in-memory
+
+> in-memory-database@1.0.0 connect-in-memory /home/emma/in-memory-database
+> ts-node ./scripts/connectInMemory.ts
+
+>> SET a foo
+>> SET b baz
+>> BEGIN
+>> GET a
+foo
+>> SET a bar
+>> COUNT bar
+1
+>> BEGIN
+>> COUNT bar
+1
+>> DELETE a
+>> GET a
+>> COUNT bar
+0
+>> ROLLBACK
+>> GET a
+bar
+>> COUNT bar
+1
+>> COMMIT
+>> GET a
+bar
+>> GET b
+baz
+>> END
+```
+
+Here is the output of all the unique errors. Note at the end the user terminates the program thus `Ending connection!` is displayed.
+```
+emma@Blighttown:~/in-memory-database$ npm run connect-in-memory
+
+> in-memory-database@1.0.0 connect-in-memory /home/emma/in-memory-database
+> ts-node ./scripts/connectInMemory.ts
+
+>> SET foo
+Recognized command SET, but invalid number of parameters specified
+>> GET foo bar
+Recognized command GET, but invalid number of parameters specified
+>> DELETE foo bar
+Recognized command DELETE, but invalid number of parameters specified
+>> COUNT foo bar
+Recognized command COUNT, but invalid number of parameters specified
+>> FAKE
+Unexpected Input. Nothing happened.
+>>
+Ending connection!
+emma@Blighttown:~/in-memory-database$
+```
+
+Here is the output showing how my tweak to the CLI output can distinguish between no key and the string value NULL
+```
+emma@Blighttown:~/in-memory-database$ npm run connect-in-memory
+
+> in-memory-database@1.0.0 connect-in-memory /home/emma/in-memory-database
+> ts-node ./scripts/connectInMemory.ts
+
+>> SET a NULL
+>> GET a
+NULL
+>> GET b
+>> END
+```
