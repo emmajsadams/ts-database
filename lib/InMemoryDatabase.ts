@@ -1,11 +1,11 @@
-import Database from '../types/Database'
+import { Database } from '../types/Database'
 
 interface InMemoryDatabaseInstance<K, V> {
 	values: Map<K, V>
 	valueCounts: Map<V, number>
 }
 
-export default class InMemoryDatabase<K, V> implements Database<K, V> {
+export class InMemoryDatabase<K, V> implements Database<K, V> {
 	private databaseInstance: InMemoryDatabaseInstance<K, V>
 	private transactions: InMemoryDatabaseInstance<K, V>[]
 
