@@ -1,0 +1,7 @@
+default:
+  image: gitpod/workspace-full
+
+build-job:
+  stage: build
+  script:
+    - yarn install && yarn run build
