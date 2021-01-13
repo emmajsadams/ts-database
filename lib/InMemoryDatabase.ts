@@ -71,7 +71,7 @@ export default class InMemoryDatabase<K, V> implements Database<K, V> {
 		// if inTransaction then return last transaction in the transactions array
 		// else return null
 
-		if (this.inTransaction) {
+		if (this.inTransaction()) {
 			return this.transactions[this.transactions.length - 1]
 		}
 
