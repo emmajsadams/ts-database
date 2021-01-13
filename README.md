@@ -15,3 +15,7 @@ take-home project for devoted health implemented following TechAssignment.pdf re
 - Explain how to install node with n
 - Explain how to install yarn
 - Consider implementing a main JS file with TSC build so this could be included as a library. `"main": "scripts/connectInMemory",`
+
+# File Structure
+
+- .yarnrc includes a single line that instructs the yarn package manager to install specific versions of libraries ensuring a consistent application across installs.
