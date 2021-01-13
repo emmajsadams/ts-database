@@ -37,4 +37,9 @@ export default class InMemoryDatabase<K, V> implements Database<K, V> {
 
 		return 0
 	}
+
+	beginTransaction(): void {
+		// copy the previous transaction. if none create a new map. DO NOT COPY THE FULL DATABASE INSTANCE
+		// add to transactions array as last transaction
+	}
 }
