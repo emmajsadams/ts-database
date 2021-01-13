@@ -24,6 +24,10 @@ take-home project for devoted health implemented following TechAssignment.pdf re
 - Install yarn 1.x which will be used as an alternative to npm https://classic.yarnpkg.com/en/docs/install
 - Execute `yarn install` in the project directory
 
+# Execution
+
+Execute `yarn run connect-in-memory` in the project directory
+
 # File Structure
 
 - package.json contains a list of yarn scripts to develop the program and run it. It also specifies the libraries used and which version of node should be used to run the application.
