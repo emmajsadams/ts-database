@@ -32,7 +32,7 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 		if (this.inTransaction()) {
 			const values = this.getCurrentValues()
 			value = values.has(key) ? values.get(key) : value
-	}
+		}
 
 		return value
 	}
@@ -59,7 +59,7 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 				valueCounts.set(overwrittenValue, overwrittenValueCount)
 			} else {
 				valueCounts.delete(overwrittenValue)
-	}
+			}
 		}
 
 		// Finally, the valueCounts must be updated on each set for the newly set value in order for count() to return the correct value
@@ -81,8 +81,8 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 		// For a key that does not exist we can safely do nothing since values and valueCounts will remain the same.
 		const value = this.get(key)
 		if (!value) {
-		return null
-	}
+			return null
+		}
 
 		const values = this.getCurrentValues()
 		const valueCounts = this.getCurrentValueCounts()
@@ -120,7 +120,7 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 		// If there is no transaction we know the database count is accurate
 		if (!this.inTransaction()) {
 			return databaseCount
-	}
+		}
 
 		// If there is a transaction we need to add the database value count to the transaction value count since
 		// count must reflect the current state of the transaction
@@ -151,7 +151,7 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 		} else {
 			newTransactionValues = new Map<K, V>()
 			newTransactionValueCounts = new Map<V, number>()
-	}
+		}
 
 		this.transactions.push({
 			values: newTransactionValues,
@@ -181,8 +181,8 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 	 */
 	commitTransactions(): boolean {
 		if (!this.inTransaction()) {
-		return false
-	}
+			return false
+		}
 
 		// Since the current transaction state contains the state from previous transactions we only need to focus
 		// on committing the current transaction.
@@ -219,17 +219,37 @@ export class InMemoryDatabase<K, V> implements Database<K, V> {
 		return true
 	}
 
-	private getCurrentTransaction(): InMemoryDatabaseInstance<K, V> | null {
-		// if inTransaction then return last transaction in the transactions array
-		// else return null
-
+	/**
+	 * O(1) runtime where n is the number of items.
+	 * O(1) runtime where n is the number of items in the transaction, if a transaction exists.
+	 * O(1) runtime where n is the number of transactions.
+	 */
+	private getCurrentValues(): Map<K, V> {
 		if (this.inTransaction()) {
-			return this.transactions[this.transactions.length - 1]
+			return this.transactions[this.transactions.length - 1].values
 		}
 
-		return null
+		return this.databaseInstance.values
 	}
 
+	/**
+	 * O(1) runtime where n is the number of items.
+	 * O(1) runtime where n is the number of items in the transaction, if a transaction exists.
+	 * O(1) runtime where n is the number of transactions.
+	 */
+	private getCurrentValueCounts(): Map<V, number> {
+		if (this.inTransaction()) {
+			return this.transactions[this.transactions.length - 1].valueCounts
+		}
+
+		return this.databaseInstance.valueCounts
+	}
+
+	/**
+	 * O(1) runtime where n is the number of items.
+	 * O(1) runtime where n is the number of items in the transaction, if a transaction exists.
+	 * O(1) runtime where n is the number of transactions.
+	 */
 	private inTransaction(): boolean {
 		return this.transactions.length > 0
 	}
