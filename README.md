@@ -1,6 +1,6 @@
 # In Memory Database
 
-Take home project for <https://www.devoted.com/>. Implemented following the TechAssignment.pdf requirements. If you would like to be added to the private GitLab repo <https://gitlab.com/EmmaJCline/in-memory-database> just send me an email at emma@cline.engineer. It shows the current CI job status and that all the commits were verified with my local gpg key.
+A transactional in-memory database implemented with common operations.
 
 # Setup
 
@@ -10,7 +10,7 @@ Take home project for <https://www.devoted.com/>. Implemented following the Tech
 
 # Connect to in memory database
 
-Execute `npm run connect-in-memory` in the project directory to start the REPL environment necessary to replicate the TechAssignment.pdf examples. Please note as mentioned in #Decisions my program does not display NULL for unset keys (further reasoning below) so the example output will not exactly match my output.
+Execute `npm run connect-in-memory` in the project directory to start the REPL environment to run database operations. Please note as mentioned in #Decisions my program does not display NULL for unset keys (further reasoning below) so the example output will not exactly match my output.
 
 # Development
 

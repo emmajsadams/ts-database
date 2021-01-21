@@ -1,7 +1,7 @@
 {
 	"name": "in-memory-database",
 	"version": "1.0.0",
-	"description": "An in memory database following the specs of TechAssignment.pdf",
+	"description": "An in memory database following the specs",
 	"repository": "git@gitlab.com:EmmaJCline/in-memory-database.git",
 	"author": "Emma Cline <emma@cline.engineer>",
 	"license": "MIT",
