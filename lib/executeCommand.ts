@@ -1,7 +1,7 @@
 import { Database } from '../types/Database'
 
 /**
- * Executes database functions based on CLI input according to TechAssessment.pdf
+ * Executes database functions based on CLI input
  */
 export function executeCommand(
 	database: Database<string, string>,
