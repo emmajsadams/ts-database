@@ -1,8 +1,8 @@
 {
-	"name": "in-memory-database",
+	"name": "ts-database",
 	"version": "1.0.0",
-	"description": "An in memory database following the specs",
-	"repository": "git@gitlab.com:EmmaJCline/in-memory-database.git",
+	"description": "A transactional in-memory database for TypeScript with a string key/value REPL",
+	"repository": "git@gitlab.com:EmmaJCline/ts-database.git",
 	"author": "Emma Cline <emma@cline.engineer>",
 	"license": "MIT",
 	"private": true,

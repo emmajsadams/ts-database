@@ -1,10 +1,10 @@
-# In Memory Database
+# TypeScript Database
 
-A transactional in-memory database implemented with common operations.
+A transactional in-memory database for TypeScript with a string key/value REPL.
 
 # Setup
 
-- Clone this repository `git@gitlab.com:EmmaJCline/in-memory-database.git`
+- Clone this repository `git@gitlab.com:EmmaJCline/ts-database.git`
 - Install the node version listed in package.json engines.node (lts which is 14.15.4 at the time of submission). A popular tool for managing node versions is <https://github.com/tj/n>, but your operating system package manager would also work here.
 - Execute `npm install` in the project directory
 
