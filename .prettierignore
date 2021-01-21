@@ -33,9 +33,7 @@ package-lock.json
 # Project files unnecessary to format or lint
 LICENSE.md
 README.md
-TechAssessment.pdf
 package.json
-
 
 # nyc test coverage cache
 .nyc_output
